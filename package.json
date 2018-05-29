@@ -1,15 +1,17 @@
 {
   "name": "node-chat-app",
+  "url": "https://nodechapapp.herokuapp.com/",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start":"node server/server.js"
+    "start": "node server/server.js"
   },
   "engines": {
-    "node":"9.2.0"
+    "node": "9.2.0"
   },
   "dependencies": {
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "socket.io": "^2.1.1"
   }
 }
