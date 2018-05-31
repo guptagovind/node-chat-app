@@ -11,7 +11,7 @@ socket.on('newMessage', function (newMessage) {
 });
 
 //emit
-socket.emit('createMessage', {
+/*socket.emit('createMessage', {
   form:'xyz.gmail.com',
   text:'Hello, I am good'
-});
+});*/
