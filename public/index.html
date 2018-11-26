@@ -3,16 +3,24 @@
     <head>
         <meta charset="UTF-8">
         <title>Title</title>
+        <link rel="stylesheet" href="css/styles.css"></link>
     </head>
-    <body>
-        Welcome to node-chat-app!!
-    <ol id="messages"></ol>
+    <body class="chat">
+    <div class="chat__sidebar">
+        <h3>People</h3>
+        <div id="users"></div>
+    </div>
+    <div class="chat__main">
+        <ol id="messages" class="chat__messages"></ol>
 
-        <form id="message-form">
-            <input name="message" type="text" placeholder="message">
-            <button>send</button>
-        </form>
-    <button id="send-location">send location</button>
+        <div class="chat__footer">
+            <form id="message-form">
+                <input name="message" type="text" placeholder="message" autofocus autocomplete="off">
+                <button>send</button>
+            </form>
+            <button id="send-location">send location</button>
+        </div>
+    </div>
     </body>
     <script src="/socket.io/socket.io.js"></script>
     <script src="js/libs/jquery-3.3.1.min.js"></script>
