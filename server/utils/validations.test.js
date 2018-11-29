@@ -4,17 +4,17 @@ const {isRealString} = require('./validations');
 
 describe('isRealString', () => {
   it('should reject not-string values', () => {
-    var res = isRealString(98);
+    let res = isRealString(98);
     expect(res).toBe(false);
   });
 
   it('should reject string with only spaces', () => {
-    var res = isRealString('   ');
+    let res = isRealString('   ');
     expect(res).toBe(false);
   });
 
   it('should allow string with non-space characters', () => {
-    var res = isRealString('  Test  ');
+    let res = isRealString('  Test  ');
     expect(res).toBe(true);
   })
 });
