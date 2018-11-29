@@ -33,28 +33,20 @@ io.on('connection', (socket) => {
     callback();
   });
 
-
-
-
-/*  socket.emit('newMessage', {
-    from:'abc.gmail.com',
-    text:'Hello, How are you?',
-    createdAt:'1234567890'
-  });*/
-
+  
   socket.on('createMessage', (createMessage, callback) => {
-    console.log('createMessage ', createMessage);
-    io.emit('newMessage', generateMessage(createMessage.from, createMessage.text));
+    let user = users.getUser(socket.id);
+    if (user && isRealString(createMessage.text)) {
+      io.to(user.room).emit('newMessage', generateMessage(user.name, createMessage.text));
+    }
     callback('This is from server.');
-    /*socket.broadcast.emit('newMessage', {
-      from:'Admin',
-      text:'New user joined the chat app',
-      createdAt:new Date().getTime()
-    });*/
   });
 
   socket.on('createLocationMessage', (coords) => {
-    io.emit('newLocationMessage', generateLocationMessage('Admin', coords.latitude, coords.longitude))
+    let user = users.getUser(socket.id);
+    if (user) {
+      io.to(user.room).emit('newLocationMessage', generateLocationMessage(user.name, coords.latitude, coords.longitude));
+    }
   });
 
   socket.on('disconnect', () =>{
